@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="org.techtown.samplemusicplayer">
+
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+
+    <application
+        android:name=".Music.MusicApplication"
+        android:allowBackup="true"
+        android:icon="@drawable/random_player"
+        android:label="@string/Application_name"
+        android:roundIcon="@drawable/random_player"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.SampleMusicPlayer"
+        android:requestLegacyExternalStorage="true"
+        android:hardwareAccelerated="true">
+        <service
+            android:name=".MusicService"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="REWIND"/>
+                <action android:name="TOGGLE_PLAY"/>
+                <action android:name="FORWARD"/>
+                <action android:name="CLOSE"/>
+            </intent-filter>
+        </service>
+
+        <activity android:name=".Main.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>
